@@ -1,0 +1,7 @@
+[package]
+name = "risk_battle_simulation"
+version = "0.1.0"
+authors = ["alex <salexln@gmail.com>"]
+
+[dependencies]
+rand = "0.3"
