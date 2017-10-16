@@ -2,13 +2,25 @@
 extern crate rand;
 use rand::Rng;
 use std::env;
-
+use rand::distributions::{IndependentSample, Range};
 
 
 fn main() {
     //print_random_number();
     let mut values = parse_args();
     println!("{:?}", values);
+
+    roll_dice();
+}
+
+// generates a random number between 1 and 6
+fn roll_dice() -> i32 {
+    let between = Range::new(1, 6);
+    let mut rng = rand::thread_rng();
+    let mut roll = between.ind_sample(&mut rng);
+
+    println!("roll {}", roll);
+    return roll;
 }
 
 
