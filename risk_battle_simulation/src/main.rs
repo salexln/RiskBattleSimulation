@@ -3,6 +3,8 @@ extern crate rand;
 use rand::Rng;
 use std::env;
 use rand::distributions::{IndependentSample, Range};
+use std::process;
+
 
 
 fn main() {
@@ -57,8 +59,8 @@ fn decide_on_winner(mut attack_rolls : Vec<i32>, mut defend_rolls : Vec<i32>) ->
     defend_rolls.sort();
     defend_rolls.reverse();
 
-    println!("attack_rolls : {:?}", attack_rolls);
-    println!("defend_rolls : {:?}", defend_rolls);
+    println!("Attack rolls : {:?}", attack_rolls);
+    println!("Defend rolls : {:?}", defend_rolls);
 
     let mut idx = 0;
     let mut defender_wins = 0;
@@ -101,9 +103,10 @@ fn parse_args() -> (i32, i32){
     if args[1] == "--help" {
         println!("--number-of-attackers - Number of soldies to attack");
         println!("--number-of-defenders - Number of soldies to defend");
+        process::exit(1);
     } else {
         if args.len() == 5 {
-            if args[1] == "--number-of-attackers" && args[3] == "--number-of-defenders" {                
+            if args[1] == "--number-of-attackers" && args[3] == "--number-of-defenders" {
                 attackers = args[2].parse().unwrap();
                 defenders = args[4].parse().unwrap();
             } else {
